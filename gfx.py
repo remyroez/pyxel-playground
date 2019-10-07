@@ -1,5 +1,6 @@
 
 import pyxel
+import random
 
 # アプリケーションクラス
 class App:
@@ -31,6 +32,15 @@ class App:
 
         # 画像の描画
         pyxel.blt(0, 0, 0, 0, 0, self.cat.width, self.cat.height)
+
+        # 線の描画
+        for i in range(10):
+            pyxel.line(
+                random.randrange(0, pyxel.width),
+                random.randrange(0, pyxel.height),
+                random.randrange(0, pyxel.width),
+                random.randrange(0, pyxel.height),
+                random.randrange(0, 16))
 
 # アプリケーションクラスのインスタンス化
 # コンストラクタ内で Pyxel が起動し、終了するまで戻ってこない
