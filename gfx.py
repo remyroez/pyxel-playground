@@ -41,6 +41,10 @@ class App:
                 random.randrange(0, pyxel.width),
                 random.randrange(0, pyxel.height),
                 random.randrange(0, 16))
+            pyxel.pix(
+                random.randrange(0, pyxel.width),
+                random.randrange(0, pyxel.height),
+                random.randrange(0, 16))
 
 # アプリケーションクラスのインスタンス化
 # コンストラクタ内で Pyxel が起動し、終了するまで戻ってこない
