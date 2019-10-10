@@ -35,6 +35,12 @@ class App:
 
         # 線の描画
         for i in range(10):
+            pyxel.rectb(
+                random.randrange(0, pyxel.width),
+                random.randrange(0, pyxel.height),
+                random.randrange(0, pyxel.width),
+                random.randrange(0, pyxel.height),
+                random.randrange(0, 16))
             pyxel.line(
                 random.randrange(0, pyxel.width),
                 random.randrange(0, pyxel.height),
