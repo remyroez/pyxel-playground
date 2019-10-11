@@ -10,10 +10,14 @@ class App:
         pyxel.init(160, 120, caption="Hello Pyxel")
 
         # イメージ 0 番を定義
-        self.cat = pyxel.image(0)
+        self.cat = {
+            'width' : 16,
+            'height' : 16,
+            'path' : 'assets/cat_16x16.png',
+        }
 
         # 画像の読み込み
-        self.cat.load(0, 0, 'assets/cat_16x16.png')
+        self.cat['image'] = pyxel.image(0).load(0, 0, self.cat['path'])
 
         # エンジン起動
         pyxel.run(self.update, self.draw)
@@ -30,32 +34,45 @@ class App:
         # 画面のクリア
         pyxel.cls(1)
 
-        # 画像の描画
-        pyxel.blt(0, 0, 0, 0, 0, self.cat.width, self.cat.height)
-
-        # 線の描画
+        # 描画テスト
         for i in range(10):
+            # 矩形
             pyxel.rectb(
                 random.randrange(0, pyxel.width),
                 random.randrange(0, pyxel.height),
                 random.randrange(0, pyxel.width),
                 random.randrange(0, pyxel.height),
                 random.randrange(0, 16))
+
+            # 線
             pyxel.line(
                 random.randrange(0, pyxel.width),
                 random.randrange(0, pyxel.height),
                 random.randrange(0, pyxel.width),
                 random.randrange(0, pyxel.height),
                 random.randrange(0, 16))
+
+            # 点
             pyxel.pix(
                 random.randrange(0, pyxel.width),
                 random.randrange(0, pyxel.height),
                 random.randrange(0, 16))
+
+            # 円
             pyxel.circb(
                 random.randrange(0, pyxel.width),
                 random.randrange(0, pyxel.height),
                 random.randrange(0, 16),
                 random.randrange(0, 16))
+
+            # パレットの入れ替え
+            pyxel.pal(random.randrange(0, 16), random.randrange(0, 16))
+
+        # 画像の描画
+        pyxel.blt((pyxel.width - self.cat['width']) / 2, (pyxel.height - self.cat['height']) / 2, 0, 0, 0, self.cat['width'], self.cat['height'])
+
+        # パレットを戻す
+        pyxel.pal()
 
 # アプリケーションクラスのインスタンス化
 # コンストラクタ内で Pyxel が起動し、終了するまで戻ってこない
